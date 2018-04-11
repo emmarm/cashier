@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { boxes, drinks } from '../../../constants/menu';
+import menu from '../../../constants/menu';
 import MenuItem from '../presentational/MenuItem';
 import MenuItemModalContainer from '../MenuItemModalContainer';
 
 const MenuForm = (props) => (
   <div>
     <h2>Boxes</h2>
-    {boxes.map((box) => (
+    {menu.boxes.map((box) => (
       <MenuItem
         key={box.type}
         item={box}
@@ -15,7 +15,7 @@ const MenuForm = (props) => (
       />
     ))}
     <h2>Drinks</h2>
-    {drinks.map((drink) => (
+    {menu.drinks.map((drink) => (
       <MenuItem
         key={drink.type}
         item={drink}

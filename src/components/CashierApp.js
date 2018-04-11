@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 import MenuFormContainer from './partials/MenuFormContainer';
-import OrderSummary from './partials/OrderSummary';
-import PaymentForm from './partials/PaymentForm';
+import OrderSummaryContainer from './partials/OrderSummaryContainer';
+import PaymentFormContainer from './partials/PaymentFormContainer';
 
 class CashierApp extends Component {
   state = {
@@ -20,6 +20,14 @@ class CashierApp extends Component {
       orderTotal: prevState.orderTotal + itemTotal
     }));
   }
+  handleDeleteItem = (id) => {
+    const item = this.state.orderItems.filter((orderItem) => orderItem.id === id)[0];
+
+    this.setState((prevState) => ({
+      orderItems: prevState.orderItems.filter((prevItem) => prevItem.id !== id),
+      orderTotal: prevState.orderTotal - item.itemsTotal
+    }));
+  }
   render() {
     return (
       <div>
@@ -27,11 +35,11 @@ class CashierApp extends Component {
           updateOrderTotal={this.updateOrderTotal}
           updateOrderItems={this.updateOrderItems}
         />
-        <OrderSummary
+        <OrderSummaryContainer
           orderItems={this.state.orderItems}
-          orderTotal={this.state.orderTotal}
+          handleDeleteItem={this.handleDeleteItem}
         />
-        <PaymentForm
+        <PaymentFormContainer
           orderTotal={this.state.orderTotal}
         />
       </div>

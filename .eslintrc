@@ -12,7 +12,7 @@
   "rules": {
     "comma-dangle": "off",
     "no-unused-vars": [
-      "error",
+      "warn",
       {
         "vars": "local",
         "args": "none"
@@ -21,6 +21,7 @@
     "react/jsx-filename-extension": "off",
     "jsx-a11y/anchor-is-valid": "off",
     "arrow-parens": "off",
-    "react/prop-types": "warn"
+    "react/prop-types": "warn",
+    "react/no-unused-state": "warn"
   }
 }

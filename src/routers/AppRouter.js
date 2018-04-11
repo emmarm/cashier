@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import Header from '../components/partials/Header';
+import Header from '../components/partials/presentational/Header';
 import CashierApp from '../components/CashierApp';
 import LoginPage from '../components/LoginPage';
 import NotFoundPage from '../components/NotFoundPage';

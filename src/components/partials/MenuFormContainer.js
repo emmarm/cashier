@@ -20,10 +20,10 @@ class MenuFormContainer extends Component {
   render() {
     return (
       <MenuForm
-        handleItemSelect={this.handleItemSelect}
         selectedItem={this.state.selectedItem}
         sizes={this.state.selectedItem ? Object.keys(this.state.selectedItem.sizes) : undefined}
         addons={this.state.selectedItem ? Object.keys(this.state.selectedItem.addons) : undefined}
+        handleItemSelect={this.handleItemSelect}
         handleCloseModal={this.handleCloseModal}
         updateOrderItems={this.props.updateOrderItems}
         updateOrderTotal={this.props.updateOrderTotal}
