@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Modal from 'react-modal';
 
 const PaymentReturnModal = (props) => (
@@ -20,5 +21,11 @@ const PaymentReturnModal = (props) => (
     </div>
   </Modal>
 );
+
+PaymentReturnModal.propTypes = {
+  changeDue: PropTypes.bool.isRequired,
+  handleCloseModal: PropTypes.func.isRequired,
+  amountChangeDue: PropTypes.number.isRequired
+};
 
 export default PaymentReturnModal;

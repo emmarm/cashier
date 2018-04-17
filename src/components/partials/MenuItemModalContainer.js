@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import uuid from 'uuid';
 
 import MenuItemModal from './presentational/MenuItemModal';
@@ -92,5 +93,24 @@ class MenuItemModalContainer extends Component {
     );
   }
 }
+
+MenuItemModalContainer.defaultProps = {
+  selectedItem: null,
+  sizes: [],
+  addons: []
+};
+
+MenuItemModalContainer.propTypes = {
+  selectedItem: PropTypes.shape({
+    type: PropTypes.string.isRequired,
+    sizes: PropTypes.objectOf(PropTypes.number),
+    addons: PropTypes.objectOf(PropTypes.number)
+  }),
+  updateOrderItems: PropTypes.func.isRequired,
+  updateOrderTotal: PropTypes.func.isRequired,
+  handleCloseModal: PropTypes.func.isRequired,
+  sizes: PropTypes.arrayOf(PropTypes.string),
+  addons: PropTypes.arrayOf(PropTypes.string)
+};
 
 export default MenuItemModalContainer;

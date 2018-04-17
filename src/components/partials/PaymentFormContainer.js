@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import PaymentForm from './presentational/PaymentForm';
 
@@ -9,24 +10,32 @@ class PaymentFormContainer extends Component {
     error: ''
   }
   onReceivedChange = (e) => {
-    const received = e.target.value;
-    this.setState(() => ({ received }));
+    const received = Number(e.target.value);
+
+    if (received) {
+      this.setState(() => ({
+        received,
+        error: ''
+      }));
+    }
   }
   onReceivedBlur = (e) => {
-    const received = e.target.value * 1000;
+    const received = Number(e.target.value) * 1000;
     this.setState(() => ({ received }));
   }
   onReceivedFocus = (e) => {
-    const received = e.target.value / 1000;
+    const received = Number(e.target.value) / 1000;
     this.setState(() => ({ received }));
   }
-  onCompleteOrder = () => {
+  onCompleteOrder = (e) => {
+    e.preventDefault();
+
     const diff = this.state.received - this.props.orderTotal;
 
-    if (diff < 0) {
-      this.setState(() => ({
-        error: 'Please input amount received'
-      }));
+    if (this.state.received === 0) {
+      this.setState(() => ({ error: 'Please input amount' }));
+    } else if (diff < 0) {
+      this.setState(() => ({ error: 'Insufficient value' }));
     } else if (diff > 0) {
       this.setState(() => ({
         changeDue: true
@@ -54,5 +63,9 @@ class PaymentFormContainer extends Component {
     );
   }
 }
+
+PaymentFormContainer.propTypes = {
+  orderTotal: PropTypes.number.isRequired
+};
 
 export default PaymentFormContainer;

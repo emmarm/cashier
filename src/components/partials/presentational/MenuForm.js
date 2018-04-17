@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import menu from '../../../constants/menu';
 import MenuItem from '../presentational/MenuItem';
@@ -44,5 +45,25 @@ const MenuForm = (props) => (
     </div>
   </div>
 );
+
+MenuForm.defaultProps = {
+  selectedItem: null,
+  sizes: [],
+  addons: []
+};
+
+MenuForm.propTypes = {
+  handleItemSelect: PropTypes.func.isRequired,
+  selectedItem: PropTypes.shape({
+    type: PropTypes.string.isRequired,
+    sizes: PropTypes.objectOf(PropTypes.number),
+    addons: PropTypes.objectOf(PropTypes.number)
+  }),
+  sizes: PropTypes.arrayOf(PropTypes.string),
+  addons: PropTypes.arrayOf(PropTypes.string),
+  handleCloseModal: PropTypes.func.isRequired,
+  updateOrderItems: PropTypes.func.isRequired,
+  updateOrderTotal: PropTypes.func.isRequired
+};
 
 export default MenuForm;

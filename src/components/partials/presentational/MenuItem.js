@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const MenuItem = (props) => (
   <div className="group__item">
@@ -10,5 +11,14 @@ const MenuItem = (props) => (
     </button>
   </div>
 );
+
+MenuItem.propTypes = {
+  handleItemSelect: PropTypes.func.isRequired,
+  item: PropTypes.shape({
+    type: PropTypes.string.isRequired,
+    sizes: PropTypes.objectOf(PropTypes.number),
+    addons: PropTypes.objectOf(PropTypes.number)
+  }).isRequired
+};
 
 export default MenuItem;

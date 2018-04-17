@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import MenuItemOption from './presentational/MenuItemOption';
 
@@ -19,7 +20,6 @@ class MenuItemOptionContainer extends Component {
   render() {
     return (
       <MenuItemOption
-        className={this.props.className}
         handleOptionSelect={this.handleOptionSelect}
         selectedItem={this.props.selectedItem}
         size={this.props.size}
@@ -28,5 +28,21 @@ class MenuItemOptionContainer extends Component {
     );
   }
 }
+
+MenuItemOptionContainer.defaultProps = {
+  size: undefined,
+  addon: undefined
+};
+
+MenuItemOptionContainer.propTypes = {
+  selectedItem: PropTypes.shape({
+    type: PropTypes.string.isRequired,
+    sizes: PropTypes.objectOf(PropTypes.number),
+    addons: PropTypes.objectOf(PropTypes.number)
+  }).isRequired,
+  size: PropTypes.string,
+  addon: PropTypes.string,
+  handleOptionSelect: PropTypes.func.isRequired
+};
 
 export default MenuItemOptionContainer;

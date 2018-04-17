@@ -1,5 +1,6 @@
 import React from 'react';
 import numeral from 'numeral';
+import PropTypes from 'prop-types';
 
 import PaymentReturnModal from '../presentational/PaymentReturnModal';
 
@@ -15,13 +16,10 @@ const PaymentForm = (props) => (
       </div>
       <form className="received__form">
         <div className="payment-group">
-          <label
-            className="payment-group__title"
-            htmlFor="received"
-          >
+          <label className="payment-group__title" htmlFor="received">
             Received
           </label>
-          {props.error !== '' && <p>{props.error}</p>}
+          {props.error && <p>{props.error}</p>}
           <input
             className="payment-group__amount--input"
             type="number"
@@ -35,10 +33,7 @@ const PaymentForm = (props) => (
           />
         </div>
       </form>
-      <button
-        className="button--main-action"
-        onClick={props.onCompleteOrder}
-      >
+      <button className="button--main-action" onClick={props.onCompleteOrder}>
         Complete Order
       </button>
     </div>
@@ -49,5 +44,17 @@ const PaymentForm = (props) => (
     />
   </div>
 );
+
+PaymentForm.propTypes = {
+  orderTotal: PropTypes.number.isRequired,
+  error: PropTypes.string.isRequired,
+  onReceivedChange: PropTypes.func.isRequired,
+  onReceivedBlur: PropTypes.func.isRequired,
+  onReceivedFocus: PropTypes.func.isRequired,
+  received: PropTypes.number.isRequired,
+  onCompleteOrder: PropTypes.func.isRequired,
+  changeDue: PropTypes.bool.isRequired,
+  handleCloseModal: PropTypes.func.isRequired
+};
 
 export default PaymentForm;

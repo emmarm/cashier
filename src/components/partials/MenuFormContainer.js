@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import MenuForm from './presentational/MenuForm';
 
@@ -31,5 +32,10 @@ class MenuFormContainer extends Component {
     );
   }
 }
+
+MenuFormContainer.propTypes = {
+  updateOrderItems: PropTypes.func.isRequired,
+  updateOrderTotal: PropTypes.func.isRequired
+};
 
 export default MenuFormContainer;

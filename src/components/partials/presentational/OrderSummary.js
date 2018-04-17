@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const OrderSummary = (props) => (
   <div className="group">
@@ -26,5 +27,17 @@ const OrderSummary = (props) => (
     </div>
   </div>
 );
+
+OrderSummary.propTypes = {
+  orderItems: PropTypes.arrayOf(PropTypes.shape({
+    type: PropTypes.string.isRequired,
+    number: PropTypes.number.isRequired,
+    size: PropTypes.string,
+    addons: PropTypes.arrayOf(PropTypes.string),
+    itemsTotal: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired
+  })).isRequired,
+  handleDeleteItem: PropTypes.func.isRequired
+};
 
 export default OrderSummary;

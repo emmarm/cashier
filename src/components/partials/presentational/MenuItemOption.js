@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const MenuItemOption = (props) => (
   <div className="modal__option">
@@ -11,5 +12,16 @@ const MenuItemOption = (props) => (
     </button>
   </div>
 );
+
+MenuItemOption.defaultProps = {
+  size: undefined,
+  addon: undefined
+};
+
+MenuItemOption.propTypes = {
+  handleOptionSelect: PropTypes.func.isRequired,
+  size: PropTypes.string,
+  addon: PropTypes.string
+};
 
 export default MenuItemOption;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Modal from 'react-modal';
 
 import MenuItemOptionContainer from '../MenuItemOptionContainer';
@@ -42,8 +43,9 @@ const MenuItemModal = (props) => (
                 handleOptionSelect={props.handleSizeSelect}
                 selectedItem={props.selectedItem}
               />
-            ))}
-          </div>
+            ))
+          }
+        </div>
         {props.error && <p className="modal__error">{props.error}</p>}
       </div>
       <div className="modal__group--addons">
@@ -57,7 +59,8 @@ const MenuItemModal = (props) => (
                 handleOptionSelect={props.handleAddonSelect}
                 selectedItem={props.selectedItem}
               />
-            ))}
+            ))
+          }
         </div>
       </div>
       <button className="button--main-action modal__submit" onClick={props.handleAddItem}>
@@ -66,5 +69,28 @@ const MenuItemModal = (props) => (
     </div>
   </Modal>
 );
+
+MenuItemModal.defaultProps = {
+  sizes: [],
+  addons: []
+};
+
+MenuItemModal.propTypes = {
+  selectedItem: PropTypes.shape({
+    type: PropTypes.string.isRequired,
+    sizes: PropTypes.objectOf(PropTypes.number),
+    addons: PropTypes.objectOf(PropTypes.number)
+  }).isRequired,
+  handleCloseModal: PropTypes.func.isRequired,
+  handleDecreaseNumber: PropTypes.func.isRequired,
+  number: PropTypes.number.isRequired,
+  handleIncreaseNumber: PropTypes.func.isRequired,
+  sizes: PropTypes.arrayOf(PropTypes.string),
+  handleSizeSelect: PropTypes.func.isRequired,
+  error: PropTypes.string.isRequired,
+  addons: PropTypes.arrayOf(PropTypes.string),
+  handleAddonSelect: PropTypes.func.isRequired,
+  handleAddItem: PropTypes.func.isRequired
+};
 
 export default MenuItemModal;
