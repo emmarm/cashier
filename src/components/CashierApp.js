@@ -30,7 +30,7 @@ class CashierApp extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="container">
         <MenuFormContainer
           updateOrderTotal={this.updateOrderTotal}
           updateOrderItems={this.updateOrderItems}

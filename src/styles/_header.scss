@@ -1,0 +1,17 @@
+.header {
+  align-items: center;
+  background: $light-blue;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 25px;
+}
+
+.header__title {
+  color: lighten($purple, 10%);
+  font-size: $xl-font;
+  margin: 20px;
+}
+
+.header__title-link {
+  text-decoration: none;
+}

@@ -11,7 +11,10 @@ const PaymentReturnModal = (props) => (
     <div>
       <h2>Change Due</h2>
       <p>{props.amountChangeDue}</p>
-      <button onClick={props.handleCloseModal}>
+      <button
+        className="button"
+        onClick={props.handleCloseModal}
+      >
         Completed
       </button>
     </div>

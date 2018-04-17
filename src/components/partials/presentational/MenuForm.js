@@ -5,33 +5,43 @@ import MenuItem from '../presentational/MenuItem';
 import MenuItemModalContainer from '../MenuItemModalContainer';
 
 const MenuForm = (props) => (
-  <div>
-    <h2>Boxes</h2>
-    {menu.boxes.map((box) => (
-      <MenuItem
-        key={box.type}
-        item={box}
-        handleItemSelect={props.handleItemSelect}
-      />
-    ))}
-    <h2>Drinks</h2>
-    {menu.drinks.map((drink) => (
-      <MenuItem
-        key={drink.type}
-        item={drink}
-        handleItemSelect={props.handleItemSelect}
-      />
-    ))}
-    {!!props.selectedItem && (
-      <MenuItemModalContainer
-        selectedItem={props.selectedItem}
-        sizes={props.sizes}
-        addons={props.addons}
-        handleCloseModal={props.handleCloseModal}
-        updateOrderItems={props.updateOrderItems}
-        updateOrderTotal={props.updateOrderTotal}
-      />
-    )}
+  <div className="menu-form">
+    <div className="group">
+      <h2 className="group__title">Boxes</h2>
+      <div className="group__items--menu">
+        {menu.boxes.map((box) => (
+          <MenuItem
+            key={box.type}
+            item={box}
+            handleItemSelect={props.handleItemSelect}
+          />
+        ))}
+      </div>
+    </div>
+    <div className="group">
+      <h2 className="group__title">Drinks</h2>
+      <div className="group__items--menu">
+        {menu.drinks.map((drink) => (
+          <MenuItem
+            key={drink.type}
+            item={drink}
+            handleItemSelect={props.handleItemSelect}
+          />
+        ))}
+      </div>
+    </div>
+    <div>
+      {!!props.selectedItem && (
+        <MenuItemModalContainer
+          selectedItem={props.selectedItem}
+          sizes={props.sizes}
+          addons={props.addons}
+          handleCloseModal={props.handleCloseModal}
+          updateOrderItems={props.updateOrderItems}
+          updateOrderTotal={props.updateOrderTotal}
+        />
+      )}
+    </div>
   </div>
 );
 

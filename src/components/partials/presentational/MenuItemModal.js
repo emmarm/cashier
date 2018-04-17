@@ -3,46 +3,67 @@ import Modal from 'react-modal';
 
 import MenuItemOptionContainer from '../MenuItemOptionContainer';
 
+const modalClass = {
+  base: 'modal',
+  afterOpen: 'modal--after-open',
+  beforeClose: 'modal--before-close'
+};
+
 const MenuItemModal = (props) => (
   <Modal
     isOpen={!!props.selectedItem}
+    className={modalClass}
     onRequestClose={props.handleCloseModal}
     contentLabel="Order Details"
-    closeTimeoutMS={200}
+    closeTimeoutMS={150}
   >
-    <h2>{props.selectedItem && props.selectedItem.type}</h2>
-    <div>
-      <h3>Number</h3>
-      <button onClick={props.handleDecreaseNumber}>-</button>
-      <p>{props.number}</p>
-      <button onClick={props.handleIncreaseNumber}>+</button>
+    <div className="modal__container">
+      <h2 className="modal__title">{props.selectedItem && props.selectedItem.type}</h2>
+      <div className="modal__group--number">
+        <h3 className="modal__subtitle">Number</h3>
+        <div className="modal__options">
+          <button className="button--dark modal__option" onClick={props.handleDecreaseNumber}>
+            -
+          </button>
+          <p className="number">{props.number}</p>
+          <button className="button--dark modal__option" onClick={props.handleIncreaseNumber}>
+            +
+          </button>
+        </div>
+      </div>
+      <div className="modal__group--size">
+        {props.sizes.length > 0 && <h3 className="modal__subtitle">Size</h3>}
+        <div className="modal__options">
+          {props.sizes.length > 0 &&
+            props.sizes.map((size) => (
+              <MenuItemOptionContainer
+                key={size}
+                size={size}
+                handleOptionSelect={props.handleSizeSelect}
+                selectedItem={props.selectedItem}
+              />
+            ))}
+          </div>
+        {props.error && <p className="modal__error">{props.error}</p>}
+      </div>
+      <div className="modal__group--addons">
+        {props.addons.length > 0 && <h3 className="modal__subtitle">Addons</h3>}
+        <div className="modal__options">
+          {props.addons.length > 0 &&
+            props.addons.map((addon) => (
+              <MenuItemOptionContainer
+                key={addon}
+                addon={addon}
+                handleOptionSelect={props.handleAddonSelect}
+                selectedItem={props.selectedItem}
+              />
+            ))}
+        </div>
+      </div>
+      <button className="button--main-action modal__submit" onClick={props.handleAddItem}>
+        Add item
+      </button>
     </div>
-    <div>
-      {props.sizes.length > 0 && <h3>Size</h3>}
-      {props.error && <p>{props.error}</p>}
-      {props.sizes.length > 0 &&
-        props.sizes.map((size) => (
-          <MenuItemOptionContainer
-            key={size}
-            size={size}
-            handleOptionSelect={props.handleSizeSelect}
-            selectedItem={props.selectedItem}
-          />
-        ))}
-    </div>
-    <div>
-      {props.addons.length > 0 && <h3>Addons</h3>}
-      {props.addons.length > 0 &&
-        props.addons.map((addon) => (
-          <MenuItemOptionContainer
-            key={addon}
-            addon={addon}
-            handleOptionSelect={props.handleAddonSelect}
-            selectedItem={props.selectedItem}
-          />
-        ))}
-    </div>
-    <button onClick={props.handleAddItem}>Okay</button>
   </Modal>
 );
 

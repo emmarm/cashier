@@ -1,8 +1,11 @@
 import React from 'react';
 
 const MenuItem = (props) => (
-  <div>
-    <button onClick={() => props.handleItemSelect(props.item)}>
+  <div className="group__item">
+    <button
+      className="button--dark"
+      onClick={() => props.handleItemSelect(props.item)}
+    >
       {props.item.type}
     </button>
   </div>

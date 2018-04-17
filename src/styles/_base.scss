@@ -1,3 +1,19 @@
+html {
+  box-sizing: border-box;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 16px;
+}
+
+body {
+  background: $off-white;
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+p {
+  margin: 0;
+}
+
 .isSelected {
-  background: blueviolet !important;
+  background: linear-gradient(to bottom right, $purple, darken($purple, 20%)) !important;
 }

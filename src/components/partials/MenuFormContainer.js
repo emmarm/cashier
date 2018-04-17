@@ -4,7 +4,7 @@ import MenuForm from './presentational/MenuForm';
 
 class MenuFormContainer extends Component {
   state = {
-    selectedItem: undefined
+    selectedItem: null
   }
 
   handleItemSelect = (item) => {

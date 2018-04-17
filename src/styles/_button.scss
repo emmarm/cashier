@@ -1,0 +1,27 @@
+.button {
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 3px;
+}
+
+.button--dark {
+  @extend .button;
+  height: 50px;
+  min-width: 75px;
+  background: linear-gradient(to bottom right, lighten($dark-blue, 10%), $dark-blue);
+}
+
+.button--light {
+  @extend .button;
+  background: lighten($light-blue, 10%);
+}
+
+.button--main-action {
+  @extend .button;
+  background: $purple;
+  padding: 20px 10px;
+  width: 120px;
+  text-transform: uppercase;
+  margin: 10px 20px;
+}
