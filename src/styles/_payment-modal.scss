@@ -1,0 +1,19 @@
+.payment-modal__container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  background: $off-white;
+}
+
+.payment-modal__title {
+  margin: 40px;
+}
+
+.payment-modal__amount {
+  font-size: $l-font;
+}
+
+.payment-modal__button {
+  margin: 40px;
+}

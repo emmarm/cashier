@@ -10,10 +10,13 @@ class MenuItemOptionContainer extends Component {
     const { selectedItem } = this.props;
     const option = this.props.size || this.props.addon;
     const { target } = e;
+    const sizes = this.props.size && Array.from(target.parentNode.parentNode.childNodes);
 
-    // if (this.props.size) {
-    //   target.parentNode.children.toArray().forEach((child) => console.log(child));
-    // }
+    if (sizes) {
+      const sizeButtons = sizes.map((size) => size.childNodes[0]);
+      sizeButtons.forEach((button) => button.classList.remove('isSelected'));
+    }
+
     target.classList.add('isSelected');
     this.props.handleOptionSelect(selectedItem, option);
   }

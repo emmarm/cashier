@@ -18,23 +18,23 @@ const MenuItemModal = (props) => (
     contentLabel="Order Details"
     closeTimeoutMS={150}
   >
-    <div className="modal__container">
-      <h2 className="modal__title">{props.selectedItem && props.selectedItem.type}</h2>
-      <div className="modal__group--number">
-        <h3 className="modal__subtitle">Number</h3>
-        <div className="modal__options">
-          <button className="button--dark modal__option" onClick={props.handleDecreaseNumber}>
+    <div className="item-modal__container">
+      <h2 className="item-modal__title">{props.selectedItem && props.selectedItem.type}</h2>
+      <div className="item-modal__group--number">
+        <h3 className="item-modal__subtitle">Number</h3>
+        <div className="item-modal__options">
+          <button className="button--dark item-modal__option" onClick={props.handleDecreaseNumber}>
             -
           </button>
-          <p className="number">{props.number}</p>
-          <button className="button--dark modal__option" onClick={props.handleIncreaseNumber}>
+          <p className="item-modal__number">{props.number}</p>
+          <button className="button--dark item-modal__option" onClick={props.handleIncreaseNumber}>
             +
           </button>
         </div>
       </div>
-      <div className="modal__group--size">
-        {props.sizes.length > 0 && <h3 className="modal__subtitle">Size</h3>}
-        <div className="modal__options">
+      <div className="item-modal__group--size">
+        {props.sizes.length > 0 && <h3 className="item-modal__subtitle">Size</h3>}
+        <div className="item-modal__options">
           {props.sizes.length > 0 &&
             props.sizes.map((size) => (
               <MenuItemOptionContainer
@@ -46,11 +46,11 @@ const MenuItemModal = (props) => (
             ))
           }
         </div>
-        {props.error && <p className="modal__error">{props.error}</p>}
+        {props.error && <p className="item-modal__error">{props.error}</p>}
       </div>
-      <div className="modal__group--addons">
-        {props.addons.length > 0 && <h3 className="modal__subtitle">Addons</h3>}
-        <div className="modal__options">
+      <div className="item-modal__group--addons">
+        {props.addons.length > 0 && <h3 className="item-modal__subtitle">Addons</h3>}
+        <div className="item-modal__options">
           {props.addons.length > 0 &&
             props.addons.map((addon) => (
               <MenuItemOptionContainer
@@ -63,7 +63,7 @@ const MenuItemModal = (props) => (
           }
         </div>
       </div>
-      <button className="button--main-action modal__submit" onClick={props.handleAddItem}>
+      <button className="button--main-action item-modal__submit" onClick={props.handleAddItem}>
         Add item
       </button>
     </div>

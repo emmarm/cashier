@@ -18,6 +18,11 @@
   font-weight: bold;
 }
 
+.payment-error {
+  font-style: italic;
+  color: maroon;
+}
+
 .payment-group__amount {
   font-size: $l-font;
   padding: 10px;

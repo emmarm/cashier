@@ -1,16 +1,9 @@
 .modal {
   opacity: 0;
   background: $off-white;
-  width: 60vw;
   transition: opacity 150ms ease-in;
   margin: 100px auto;
-}
-
-.modal__container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: flex-start;
+  width: 60vw;
 }
 
 .modal--after-open {
@@ -19,64 +12,6 @@
 
 .modal--before-close {
   opacity: 0;
-}
-
-.modal__title {
-  font-size: $l-font;
-  align-self: center;
-  margin: 40px;
-}
-
-%modal__group {
-  display: grid;
-  grid-template-columns: 150px 1fr;
-}
-
-.modal__group--number {
-  @extend %modal__group;
-  grid-row: 2 / span 1;
-}
-
-.number {
-  font-size: $l-font;
-  width: 50px;
-  text-align: center;
-}
-
-.modal__group--size {
-  @extend %modal__group;
-  grid-row: 3 / span 1;
-}
-
-.modal__group--addons {
-  @extend %modal__group;
-  grid-row: 4 / span 1;
-}
-
-.modal__subtitle {
-  font-size: $m-font;
-  grid-column: 1 / span 1;
-  justify-self: end;
-  margin: 20px;
-}
-
-.modal__options {
-  grid-column: 2 / span 1;
-  display: flex;
-  align-items: center;
-}
-
-.modal__error {
-  font-style: italic;
-}
-
-.modal__option {
-  margin: 10px;
-}
-
-.modal__submit {
-  align-self: center;
-  margin: 30px 0 40px 0;
 }
 
 .ReactModal__Body--open,

@@ -1,0 +1,65 @@
+.item-modal__container {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 60vw;
+}
+
+.item-modal__title {
+  align-self: center;
+  font-size: $l-font;
+  margin: 40px;
+}
+
+%item-modal__group {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+}
+
+.item-modal__group--number {
+  @extend %item-modal__group;
+  grid-row: 2 / span 1;
+}
+
+.item-modal__number {
+  font-size: $l-font;
+  text-align: center;
+  width: 50px;
+}
+
+.item-modal__group--size {
+  @extend %item-modal__group;
+  grid-row: 3 / span 1;
+}
+
+.item-modal__group--addons {
+  @extend %item-modal__group;
+  grid-row: 4 / span 1;
+}
+
+.item-modal__subtitle {
+  font-size: $m-font;
+  grid-column: 1 / span 1;
+  justify-self: end;
+  margin: 20px;
+}
+
+.item-modal__options {
+  align-items: center;
+  display: flex;
+  grid-column: 2 / span 1;
+}
+
+.item-modal__error {
+  font-style: italic;
+}
+
+.item-modal__option {
+  margin: 10px;
+}
+
+.item-modal__submit {
+  align-self: center;
+  margin: 30px 0 40px 0;
+}

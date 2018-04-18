@@ -14,12 +14,15 @@ const PaymentForm = (props) => (
           {numeral(props.orderTotal).format('0,0')}
         </p>
       </div>
-      <form className="received__form">
+      <form
+        className="received__form"
+        onSubmit={props.onCompleteOrder}
+      >
         <div className="payment-group">
           <label className="payment-group__title" htmlFor="received">
             Received
           </label>
-          {props.error && <p>{props.error}</p>}
+          {props.error && <p className="payment-error">{props.error}</p>}
           <input
             className="payment-group__amount--input"
             type="number"

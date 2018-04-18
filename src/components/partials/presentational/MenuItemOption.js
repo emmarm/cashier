@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const MenuItemOption = (props) => (
-  <div className="modal__option">
+  <div className="item-modal__option">
     <button
       className="button--dark"
       onClick={props.handleOptionSelect}

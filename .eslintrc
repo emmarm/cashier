@@ -24,11 +24,12 @@
     "react/prop-types": "warn",
     "react/no-unused-state": "warn",
     "jsx-a11y/label-has-for": [ 2, {
-            "components": [ "Label" ],
-            "required": {
-                "some": [ "nesting", "id" ]
-            },
-            "allowChildren": false
-        }]
+      "components": [ "Label" ],
+      "required": {
+          "some": [ "nesting", "id" ]
+      },
+      "allowChildren": false
+    }],
+    "react/no-did-mount-set-state": "off"
   }
 }

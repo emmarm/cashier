@@ -4,12 +4,39 @@ import MenuFormContainer from './partials/MenuFormContainer';
 import OrderSummaryContainer from './partials/OrderSummaryContainer';
 import PaymentFormContainer from './partials/PaymentFormContainer';
 
-class CashierApp extends Component {
-  state = {
-    orderItems: [],
-    orderTotal: 0
-  }
+const defaultState = {
+  orderItems: [],
+  orderTotal: 0
+};
 
+class CashierApp extends Component {
+  state = defaultState;
+
+  componentDidMount() {
+    try {
+      const jsonItems = localStorage.getItem('orderItems');
+      const jsonTotal = localStorage.getItem('orderTotal');
+      const orderItems = JSON.parse(jsonItems);
+      const orderTotal = JSON.parse(jsonTotal);
+
+      if (orderItems) {
+        this.setState(() => ({
+          orderItems,
+          orderTotal
+        }));
+      }
+    } catch (e) {
+      // if error, don't load JSON data
+    }
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.orderItems.length !== prevState.orderItems.length) {
+      const jsonItems = JSON.stringify(this.state.orderItems);
+      const jsonTotal = JSON.stringify(this.state.orderTotal);
+      localStorage.setItem('orderItems', jsonItems);
+      localStorage.setItem('orderTotal', jsonTotal);
+    }
+  }
   updateOrderItems = (orderItem) => {
     this.setState((prevState) => ({
       orderItems: [...prevState.orderItems, orderItem]
@@ -28,6 +55,24 @@ class CashierApp extends Component {
       orderTotal: prevState.orderTotal - item.itemsTotal
     }));
   }
+  handleCompleteOrder = () => {
+    const orderedItems = this.state.orderItems.map(({
+      type,
+      size,
+      number,
+      addons
+    }) => ({
+      type,
+      size,
+      number,
+      addons
+    }));
+
+    console.log(orderedItems);
+  }
+  clearForm = () => {
+    this.setState(() => defaultState);
+  }
   render() {
     return (
       <div className="container">
@@ -41,6 +86,8 @@ class CashierApp extends Component {
         />
         <PaymentFormContainer
           orderTotal={this.state.orderTotal}
+          handleCompleteOrder={this.handleCompleteOrder}
+          clearForm={this.clearForm}
         />
       </div>
     );
