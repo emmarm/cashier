@@ -10,18 +10,32 @@ const OrderSummary = (props) => (
           className="group__item--order"
           key={`div:${item.id}`}
         >
-          <p key={`p:${item.id}`}>
-            {item.type}, {item.size} {item.addons.length > 0 ? '+' : ''}{' '}
-            {item.addons.map((addon) => `${addon}, `)} * {item.number}
+          <div
+            className="order-item__numsize"
+            key={`numsize:${item.id}`}
+          >
+            <p key={`num:${item.id}`} className="order-item__number">
+              {item.number}
+            </p>
+            <p key={`size:${item.id}`} className="order-item__size">
+              {item.size}
+            </p>
+          </div>
+          <p key={`type:${item.id}`} className="order-item__type">
+            {item.type}
           </p>
+          {item.addons.length > 0 &&
+            item.addons.map((addon) => (
+              <p key={`${item.id}${addon}`} className="order-item__addon">
+                {addon}
+              </p>
+            ))}
           <button
-            className="button--light"
+            className="order-item__button--delete"
             onClick={props.handleDeleteItem}
             key={`button:${item.id}`}
             value={item.id}
-          >
-            Delete
-          </button>
+          />
         </div>
       ))}
     </div>

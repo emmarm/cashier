@@ -1,18 +1,18 @@
 .button {
   color: white;
   border: none;
-  padding: 10px;
+  padding: 12px;
   border-radius: 3px;
 }
 
-.button--dark {
+.button--default {
   @extend .button;
   height: 50px;
   min-width: 75px;
   background: linear-gradient(to bottom right, lighten($dark-blue, 10%), $dark-blue);
 }
 
-.button--light {
+.button--secondary-action {
   @extend .button;
   background: lighten($light-blue, 10%);
 }

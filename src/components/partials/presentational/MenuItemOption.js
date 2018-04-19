@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const MenuItemOption = (props) => (
   <div className="item-modal__option">
     <button
-      className="button--dark"
+      className="button--default"
       onClick={props.handleOptionSelect}
     >
       {props.size && props.size}

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const MenuItem = (props) => (
   <div className="group__item">
     <button
-      className="button--dark"
+      className="button--default menu-item"
       onClick={() => props.handleItemSelect(props.item)}
     >
       {props.item.type}

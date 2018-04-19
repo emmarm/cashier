@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import Header from './partials/presentational/Header';
 import MenuFormContainer from './partials/MenuFormContainer';
 import OrderSummaryContainer from './partials/OrderSummaryContainer';
 import PaymentFormContainer from './partials/PaymentFormContainer';
@@ -76,6 +77,7 @@ class CashierApp extends Component {
   render() {
     return (
       <div className="container">
+        <Header />
         <MenuFormContainer
           updateOrderTotal={this.updateOrderTotal}
           updateOrderItems={this.updateOrderItems}

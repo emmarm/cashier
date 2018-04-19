@@ -23,11 +23,11 @@ const MenuItemModal = (props) => (
       <div className="item-modal__group--number">
         <h3 className="item-modal__subtitle">Number</h3>
         <div className="item-modal__options">
-          <button className="button--dark item-modal__option" onClick={props.handleDecreaseNumber}>
+          <button className="button--default item-modal__option" onClick={props.handleDecreaseNumber}>
             -
           </button>
           <p className="item-modal__number">{props.number}</p>
-          <button className="button--dark item-modal__option" onClick={props.handleIncreaseNumber}>
+          <button className="button--default item-modal__option" onClick={props.handleIncreaseNumber}>
             +
           </button>
         </div>

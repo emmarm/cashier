@@ -5,31 +5,35 @@ import menu from '../../../constants/menu';
 import MenuItem from '../presentational/MenuItem';
 import MenuItemModalContainer from '../MenuItemModalContainer';
 
+const menuHeaders = Object.keys(menu);
+
 const MenuForm = (props) => (
   <div className="menu-form">
-    <div className="group">
-      <h2 className="group__title">Boxes</h2>
-      <div className="group__items--menu">
-        {menu.boxes.map((box) => (
-          <MenuItem
-            key={box.type}
-            item={box}
-            handleItemSelect={props.handleItemSelect}
-          />
-        ))}
-      </div>
-    </div>
-    <div className="group">
-      <h2 className="group__title">Drinks</h2>
-      <div className="group__items--menu">
-        {menu.drinks.map((drink) => (
-          <MenuItem
-            key={drink.type}
-            item={drink}
-            handleItemSelect={props.handleItemSelect}
-          />
-        ))}
-      </div>
+    <div className="group__container">
+      {menuHeaders.map((header) => (
+        <div
+          key={`cont:${header}`}
+          className="group"
+        >
+          <h2
+            key={header}
+            className="group__title"
+          >
+            {header}
+          </h2>
+          <div
+            key={`items:${header}`}
+            className="group__items--menu"
+          >
+            {menu[header].map((item) => (
+              <MenuItem
+                key={item.type}
+                item={item}
+                handleItemSelect={props.handleItemSelect}
+              />
+            ))}
+          </div>
+        </div>))}
     </div>
     <div>
       {!!props.selectedItem && (
@@ -53,7 +57,6 @@ MenuForm.defaultProps = {
 };
 
 MenuForm.propTypes = {
-  handleItemSelect: PropTypes.func.isRequired,
   selectedItem: PropTypes.shape({
     type: PropTypes.string.isRequired,
     sizes: PropTypes.objectOf(PropTypes.number),

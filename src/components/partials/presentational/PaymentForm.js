@@ -11,7 +11,7 @@ const PaymentForm = (props) => (
       <div className="payment-group">
         <p className="payment-group__title">Total</p>
         <p className="payment-group__amount">
-          {numeral(props.orderTotal).format('0,0')}
+          {numeral(props.orderTotal).format('0,0')} RP
         </p>
       </div>
       <form

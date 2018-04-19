@@ -1,23 +1,54 @@
 const menu = {
   boxes: [
     {
-      type: 'Chicken Box',
+      type: 'CocoChi',
       sizes: {
         S: 5000,
         L: 7000
       },
       addons: {
-        Spoon: 500,
-        Bag: 500
+        Kerupuk: 1000
       }
     },
     {
-      type: 'Egg Box',
+      type: 'KecaChi',
+      sizes: {
+        S: 5000,
+        L: 7000
+      },
+      addons: {
+        Kerupuk: 1000
+      }
+    },
+    {
+      type: 'KemanChi',
+      sizes: {
+        S: 5000,
+        L: 7000
+      },
+      addons: {
+        Kerupuk: 1000
+      }
+    },
+    {
+      type: 'Telur',
       sizes: {
         S: 3500,
         L: 5000
       },
-      addons: {}
+      addons: {
+        Kerupuk: 1000
+      }
+    },
+    {
+      type: 'Tempe',
+      sizes: {
+        S: 5000,
+        L: 7000
+      },
+      addons: {
+        Kerupuk: 1000
+      }
     }
   ],
   drinks: [
@@ -43,6 +74,33 @@ const menu = {
         Ice: 500,
         Sugar: 0
       }
+    },
+    {
+      type: 'Soda',
+      sizes: {
+        S: 2000,
+        L: 3000
+      },
+      addons: {
+        Milk: 500
+      }
+    }
+  ],
+  addons: [
+    {
+      type: 'Bag',
+      sizes: {
+        S: 500,
+        L: 1000
+      },
+      addons: {}
+    },
+    {
+      type: 'Spoon',
+      sizes: {
+        D: 500
+      },
+      addons: {}
     }
   ]
 };

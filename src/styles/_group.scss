@@ -1,7 +1,7 @@
 .group {
   display: grid;
   grid-template-columns: 140px 1fr;
-  margin: 20px 25px;
+  margin: 15px 25px;
 }
 
 .group__title {
@@ -16,12 +16,13 @@
 
 %group__items {
   grid-column: span 1 / -1;
-  padding: 20px;
+  padding: 5px;
 }
 
 .group__items--menu {
   @extend %group__items;
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-start;
 }
 
@@ -30,7 +31,6 @@
   border-top: 2px solid lighten($off-white, 5%);
   display: flex;
   flex-direction: column;
-  height: 250px;
   overflow: scroll;
 }
 
@@ -43,14 +43,70 @@
 }
 
 .group__item {
-  margin: 0 10px;
+  margin: 5px;
 }
 
 .group__item--order{
   @extend .group__item;
   align-items: center;
+  background: lighten($off-white, 10%);
+  border-radius: 4px;
   display: flex;
-  justify-content: space-between;
-  padding: 10px 0;
+  justify-content: flex-start;
+  margin: 6px;
+  padding: 6px 18px;
 }
 
+%order-item__attr {
+  color: $off-black;
+  padding: 8px;
+}
+
+%order-item__attr--emph {
+  @extend %order-item__attr;
+  font-size: $m-font;
+  font-weight: bold;
+}
+
+.order-item__numsize {
+  @extend %order-item__attr--emph;
+  display: flex;
+  width: 50px;
+}
+
+.order-item__number {
+  color: darkslateblue;
+  padding: 4px;
+}
+
+.order-item__size {
+  color: darkorchid;
+  padding: 4px;
+}
+
+.order-item__type {
+  @extend %order-item__attr;
+  flex: 1;
+  font-size: 1.4rem;
+  margin: 0 4px;
+  padding-left: 20px;
+}
+
+.order-item__addon {
+  @extend %order-item__attr;
+  color: #444;
+  font-style: italic;
+}
+
+.order-item__button--delete {
+  background: lighten($off-white, 10%)  url("/assets/icon-delete.png");
+  border: none;
+  border-radius: 4px;
+  height: 24px;
+  margin-left: 40px;
+  width: 24px;
+}
+
+.menu-item {
+  font-size: 1.3rem;
+}
