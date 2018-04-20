@@ -1,13 +1,13 @@
 .header {
   align-items: center;
-  background: $light-blue;
+  background: $blue;
   display: flex;
   justify-content: space-between;
   padding: 0 25px;
 }
 
 .header__title {
-  color: lighten($purple, 10%);
+  color: $yellow-orange;
   font-size: $xl-font;
   margin: 20px;
 }

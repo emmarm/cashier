@@ -13,7 +13,7 @@
 }
 
 .payment-group__title {
-  color: $light-blue;
+  color: lighten($blue, 25%);
   font-size: $m-font;
   font-weight: bold;
 }

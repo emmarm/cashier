@@ -10,7 +10,7 @@ const defaultState = {
 };
 
 class PaymentFormContainer extends Component {
-  state = defaultState;
+  state = { ...defaultState }
 
   onReceivedChange = (e) => {
     const received = Number(e.target.value);
@@ -55,7 +55,7 @@ class PaymentFormContainer extends Component {
     }
   }
   handleCloseModal = () => {
-    this.setState(() => defaultState);
+    this.setState(() => ({ ...defaultState }));
 
     this.props.clearForm();
   }

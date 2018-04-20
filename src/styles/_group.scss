@@ -6,7 +6,7 @@
 
 .group__title {
   align-self: center;
-  color: darken($off-white, 25%);
+  color: lighten($blue, 20%);
   font-size: $m-font;
   grid-column: 1 / span 1;
   margin-right: 20px;
@@ -28,7 +28,7 @@
 
 .group__items--order {
   @extend %group__items;
-  border-top: 2px solid lighten($off-white, 5%);
+  border-top: 2px solid lighten($light-blue, 20%);
   display: flex;
   flex-direction: column;
   overflow: scroll;
@@ -37,7 +37,7 @@
 .group__items--payment {
   @extend %group__items;
   align-items: center;
-  background: lighten($off-white, 5%);
+  background: lighten($light-blue, 20%);
   display: grid;
   grid-template-columns: 1fr 1fr auto;
 }
@@ -49,7 +49,8 @@
 .group__item--order{
   @extend .group__item;
   align-items: center;
-  background: lighten($off-white, 10%);
+  background: white;
+  border: 1px solid $light-blue;
   border-radius: 4px;
   display: flex;
   justify-content: flex-start;
@@ -99,7 +100,7 @@
 }
 
 .order-item__button--delete {
-  background: lighten($off-white, 10%)  url("/assets/icon-delete.png");
+  background: white  url("/assets/icon-delete.png");
   border: none;
   border-radius: 4px;
   height: 24px;
