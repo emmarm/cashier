@@ -63,19 +63,19 @@ class CashierContainer extends Component {
   };
   handleCompleteOrder = () => {
     const orderedItems = this.state.orderItems.map(
-      ({ type, size, number, addons }) => ({
-        type,
-        size,
+      ({ addons, number, size, type }) => ({
+        addons,
         number,
-        addons
+        size,
+        type
       })
     );
     const { authUser } = this.props;
     const order = {
       items: [...orderedItems],
-      total: this.state.orderTotal,
+      seller: authUser,
       time: moment().format('MMMM Do YYYY, HH:mm:ss'),
-      seller: authUser
+      total: this.state.orderTotal
     };
 
     database.ref().push(order);
@@ -88,17 +88,17 @@ class CashierContainer extends Component {
       <div className="container">
         <Header handleLogOut={this.props.handleLogOut} />
         <MenuFormContainer
-          updateOrderTotal={this.updateOrderTotal}
           updateOrderItems={this.updateOrderItems}
+          updateOrderTotal={this.updateOrderTotal}
         />
         <OrderSummaryContainer
-          orderItems={this.state.orderItems}
           handleDeleteItem={this.handleDeleteItem}
+          orderItems={this.state.orderItems}
         />
         <PaymentFormContainer
-          orderTotal={this.state.orderTotal}
-          handleCompleteOrder={this.handleCompleteOrder}
           clearForm={this.clearForm}
+          handleCompleteOrder={this.handleCompleteOrder}
+          orderTotal={this.state.orderTotal}
         />
       </div>
     );

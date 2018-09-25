@@ -10,7 +10,7 @@ const modalClass = {
   beforeClose: 'modal--before-close'
 };
 
-const MenuItemModal = (props) => (
+const MenuItemModal = props => (
   <Modal
     isOpen={!!props.selectedItem}
     className={modalClass}
@@ -19,53 +19,63 @@ const MenuItemModal = (props) => (
     closeTimeoutMS={150}
   >
     <div className="item-modal__container">
-      <h2 className="item-modal__title">{props.selectedItem && props.selectedItem.type}</h2>
+      <h2 className="item-modal__title">
+        {props.selectedItem && props.selectedItem.type}
+      </h2>
       <div className="item-modal__group--number">
         <h3 className="item-modal__subtitle">Number</h3>
         <div className="item-modal__options">
-          <button className="button--default item-modal__option" onClick={props.handleDecreaseNumber}>
+          <button
+            className="button--default item-modal__option"
+            onClick={props.handleDecreaseNumber}
+          >
             -
           </button>
           <input
             className="item-modal__number"
+            onChange={props.handleNumberInputChange}
             type="number"
             value={props.number}
-            onChange={props.handleNumberInputChange}
           />
-          <button className="button--default item-modal__option" onClick={props.handleIncreaseNumber}>
+          <button
+            className="button--default item-modal__option"
+            onClick={props.handleIncreaseNumber}
+          >
             +
           </button>
         </div>
       </div>
       <div className="item-modal__group--size">
-        {props.sizes.length > 0 && <h3 className="item-modal__subtitle">Size</h3>}
+        {props.sizes.length > 0 && (
+          <h3 className="item-modal__subtitle">Size</h3>
+        )}
         <div className="item-modal__options">
           {props.sizes.length > 0 &&
-            props.sizes.map((size) => (
+            props.sizes.map(size => (
               <MenuItemOptionContainer
-                key={size}
-                size={size}
                 handleOptionSelect={props.handleSizeSelect}
+                key={size}
                 selectedItem={props.selectedItem}
+                size={size}
               />
-            ))
-          }
+            ))}
         </div>
         {props.error && <p className="item-modal__error">{props.error}</p>}
       </div>
       <div className="item-modal__group--addons">
-        {props.addons.length > 0 && <h3 className="item-modal__subtitle">Addons</h3>}
+        {props.addons.length > 0 && (
+          <h3 className="item-modal__subtitle">Addons</h3>
+        )}
         <div className="item-modal__options">
           {props.addons.length > 0 &&
-            props.addons.map((addon) => (
+            props.addons.map(addon => (
               <MenuItemOptionContainer
-                key={addon}
                 addon={addon}
                 handleOptionSelect={props.handleAddonSelect}
+                key={addon}
                 selectedItem={props.selectedItem}
               />
-            ))
-          }
+            ))}
         </div>
       </div>
       <button
@@ -85,27 +95,27 @@ const MenuItemModal = (props) => (
 );
 
 MenuItemModal.defaultProps = {
-  sizes: [],
-  addons: []
+  addons: [],
+  sizes: []
 };
 
 MenuItemModal.propTypes = {
+  addons: PropTypes.arrayOf(PropTypes.string),
+  error: PropTypes.string.isRequired,
+  handleAddItem: PropTypes.func.isRequired,
+  handleAddonSelect: PropTypes.func.isRequired,
+  handleCloseModal: PropTypes.func.isRequired,
+  handleDecreaseNumber: PropTypes.func.isRequired,
+  handleIncreaseNumber: PropTypes.func.isRequired,
+  handleNumberInputChange: PropTypes.func.isRequired,
+  handleSizeSelect: PropTypes.func.isRequired,
+  number: PropTypes.number.isRequired,
   selectedItem: PropTypes.shape({
     type: PropTypes.string.isRequired,
     sizes: PropTypes.objectOf(PropTypes.number),
     addons: PropTypes.objectOf(PropTypes.number)
   }).isRequired,
-  handleCloseModal: PropTypes.func.isRequired,
-  handleDecreaseNumber: PropTypes.func.isRequired,
-  number: PropTypes.number.isRequired,
-  handleNumberInputChange: PropTypes.func.isRequired,
-  handleIncreaseNumber: PropTypes.func.isRequired,
-  sizes: PropTypes.arrayOf(PropTypes.string),
-  handleSizeSelect: PropTypes.func.isRequired,
-  error: PropTypes.string.isRequired,
-  addons: PropTypes.arrayOf(PropTypes.string),
-  handleAddonSelect: PropTypes.func.isRequired,
-  handleAddItem: PropTypes.func.isRequired
+  sizes: PropTypes.arrayOf(PropTypes.string)
 };
 
 export default MenuItemModal;

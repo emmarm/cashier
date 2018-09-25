@@ -5,25 +5,25 @@ import LoginForm from './presentational/LoginForm';
 
 const defaultState = {
   email: '',
-  password: '',
-  error: null
+  error: null,
+  password: ''
 };
 
 class LoginFormContainer extends Component {
-  state = { ...defaultState }
+  state = { ...defaultState };
 
-  onSubmit = (e) => {
+  onSubmit = e => {
     e.preventDefault();
 
     const { email, password } = this.state;
 
     this.props.handleLogIn(email, password);
   };
-  onEmailChange = (e) => {
+  onEmailChange = e => {
     const email = e.target.value;
     this.setState(() => ({ email }));
   };
-  onPasswordChange = (e) => {
+  onPasswordChange = e => {
     const password = e.target.value;
     this.setState(() => ({ password }));
   };
@@ -32,13 +32,13 @@ class LoginFormContainer extends Component {
     const isInvalid = password === '' || email === '';
     return (
       <LoginForm
-        onSubmit={this.onSubmit}
         email={email}
-        onEmailChange={this.onEmailChange}
-        password={password}
-        onPasswordChange={this.onPasswordChange}
-        isInvalid={isInvalid}
         error={error}
+        isInvalid={isInvalid}
+        onEmailChange={this.onEmailChange}
+        onPasswordChange={this.onPasswordChange}
+        onSubmit={this.onSubmit}
+        password={password}
       />
     );
   }

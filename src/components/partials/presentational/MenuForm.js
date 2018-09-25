@@ -7,41 +7,33 @@ import MenuItemModalContainer from '../MenuItemModalContainer';
 
 const menuHeaders = Object.keys(menu);
 
-const MenuForm = (props) => (
+const MenuForm = props => (
   <div className="menu-form">
     <div className="group__container">
-      {menuHeaders.map((header) => (
-        <div
-          key={`cont:${header}`}
-          className="group"
-        >
-          <h2
-            key={header}
-            className="group__title"
-          >
+      {menuHeaders.map(header => (
+        <div className="group" key={`cont:${header}`}>
+          <h2 className="group__title" key={header}>
             {header}
           </h2>
-          <div
-            key={`items:${header}`}
-            className="group__items--menu"
-          >
-            {menu[header].map((item) => (
+          <div className="group__items--menu" key={`items:${header}`}>
+            {menu[header].map(item => (
               <MenuItem
-                key={item.type}
-                item={item}
                 handleItemSelect={props.handleItemSelect}
+                item={item}
+                key={item.type}
               />
             ))}
           </div>
-        </div>))}
+        </div>
+      ))}
     </div>
     <div>
       {!!props.selectedItem && (
         <MenuItemModalContainer
-          selectedItem={props.selectedItem}
-          sizes={props.sizes}
           addons={props.addons}
           handleCloseModal={props.handleCloseModal}
+          selectedItem={props.selectedItem}
+          sizes={props.sizes}
           updateOrderItems={props.updateOrderItems}
           updateOrderTotal={props.updateOrderTotal}
         />
@@ -51,20 +43,20 @@ const MenuForm = (props) => (
 );
 
 MenuForm.defaultProps = {
+  addons: [],
   selectedItem: null,
-  sizes: [],
-  addons: []
+  sizes: []
 };
 
 MenuForm.propTypes = {
+  addons: PropTypes.arrayOf(PropTypes.string),
+  handleCloseModal: PropTypes.func.isRequired,
   selectedItem: PropTypes.shape({
     type: PropTypes.string.isRequired,
     sizes: PropTypes.objectOf(PropTypes.number),
     addons: PropTypes.objectOf(PropTypes.number)
   }),
   sizes: PropTypes.arrayOf(PropTypes.string),
-  addons: PropTypes.arrayOf(PropTypes.string),
-  handleCloseModal: PropTypes.func.isRequired,
   updateOrderItems: PropTypes.func.isRequired,
   updateOrderTotal: PropTypes.func.isRequired
 };

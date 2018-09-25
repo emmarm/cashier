@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const MenuItem = (props) => (
+const MenuItem = props => (
   <div className="group__item">
     <button
       className="button--default menu-item"
@@ -15,9 +15,9 @@ const MenuItem = (props) => (
 MenuItem.propTypes = {
   handleItemSelect: PropTypes.func.isRequired,
   item: PropTypes.shape({
-    type: PropTypes.string.isRequired,
+    addons: PropTypes.objectOf(PropTypes.number),
     sizes: PropTypes.objectOf(PropTypes.number),
-    addons: PropTypes.objectOf(PropTypes.number)
+    type: PropTypes.string.isRequired
   }).isRequired
 };
 

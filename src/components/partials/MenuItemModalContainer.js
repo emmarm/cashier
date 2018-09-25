@@ -6,12 +6,12 @@ import MenuItemModal from './presentational/MenuItemModal';
 
 class MenuItemModalContainer extends Component {
   state = {
-    number: 1,
-    size: undefined,
     addons: [],
+    error: '',
     itemTotal: 0,
-    error: ''
-  }
+    number: 1,
+    size: undefined
+  };
 
   handleSizeSelect = (selectedItem, size) => {
     let price;
@@ -23,53 +23,51 @@ class MenuItemModalContainer extends Component {
       price = selectedItem.sizes[size] - selectedItem.sizes[this.state.size];
     }
 
-    this.setState((prevState) => ({
-      size,
+    this.setState(prevState => ({
+      error: '',
       itemTotal: prevState.itemTotal + price,
-      error: ''
+      size
     }));
-  }
+  };
   handleAddonSelect = (selectedItem, addon) => {
     const price = selectedItem.addons[addon];
 
     if (this.state.addons.indexOf(addon) === -1) {
-      this.setState((prevState) => ({
+      this.setState(prevState => ({
         addons: [...prevState.addons, addon],
         itemTotal: prevState.itemTotal + price
       }));
     }
-  }
+  };
   handleIncreaseNumber = () => {
-    this.setState((prevState) => ({
+    this.setState(prevState => ({
       number: prevState.number + 1
     }));
-  }
-  handleNumberInputChange = (e) => {
+  };
+  handleNumberInputChange = e => {
     const number = Number(e.target.value);
 
     if (number) {
       this.setState(() => ({ number }));
     }
-  }
+  };
   handleDecreaseNumber = () => {
-    this.setState((prevState) => ({
-      number: prevState.number - 1 > 0 ?
-        prevState.number - 1 :
-        1
+    this.setState(prevState => ({
+      number: prevState.number - 1 > 0 ? prevState.number - 1 : 1
     }));
-  }
+  };
   handleAddItem = () => {
     const { type } = this.props.selectedItem;
     const { number, size, addons } = this.state;
     const itemsTotal = this.state.itemTotal * this.state.number;
 
     const orderItem = {
-      type,
+      addons,
+      id: uuid(),
+      itemsTotal,
       number,
       size,
-      addons,
-      itemsTotal,
-      id: uuid()
+      type
     };
 
     if (!size) {
@@ -82,44 +80,44 @@ class MenuItemModalContainer extends Component {
     this.props.updateOrderTotal(itemsTotal);
     this.props.handleCloseModal();
     return orderItem;
-  }
+  };
   render() {
     return (
       <MenuItemModal
-        selectedItem={this.props.selectedItem}
-        sizes={this.props.sizes}
         addons={this.props.addons}
-        number={this.state.number}
         error={this.state.error}
-        handleIncreaseNumber={this.handleIncreaseNumber}
-        handleNumberInputChange={this.handleNumberInputChange}
-        handleDecreaseNumber={this.handleDecreaseNumber}
-        handleSizeSelect={this.handleSizeSelect}
+        handleAddItem={this.handleAddItem}
         handleAddonSelect={this.handleAddonSelect}
         handleCloseModal={this.props.handleCloseModal}
-        handleAddItem={this.handleAddItem}
+        handleDecreaseNumber={this.handleDecreaseNumber}
+        handleIncreaseNumber={this.handleIncreaseNumber}
+        handleNumberInputChange={this.handleNumberInputChange}
+        handleSizeSelect={this.handleSizeSelect}
+        number={this.state.number}
+        selectedItem={this.props.selectedItem}
+        sizes={this.props.sizes}
       />
     );
   }
 }
 
 MenuItemModalContainer.defaultProps = {
+  addons: [],
   selectedItem: null,
-  sizes: [],
-  addons: []
+  sizes: []
 };
 
 MenuItemModalContainer.propTypes = {
+  addons: PropTypes.arrayOf(PropTypes.string),
+  handleCloseModal: PropTypes.func.isRequired,
   selectedItem: PropTypes.shape({
     type: PropTypes.string.isRequired,
     sizes: PropTypes.objectOf(PropTypes.number),
     addons: PropTypes.objectOf(PropTypes.number)
   }),
-  updateOrderItems: PropTypes.func.isRequired,
-  updateOrderTotal: PropTypes.func.isRequired,
-  handleCloseModal: PropTypes.func.isRequired,
   sizes: PropTypes.arrayOf(PropTypes.string),
-  addons: PropTypes.arrayOf(PropTypes.string)
+  updateOrderItems: PropTypes.func.isRequired,
+  updateOrderTotal: PropTypes.func.isRequired
 };
 
 export default MenuItemModalContainer;

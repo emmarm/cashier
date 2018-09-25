@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import PaymentReturnModal from '../presentational/PaymentReturnModal';
 
-const PaymentForm = (props) => (
+const PaymentForm = props => (
   <div className="group">
     <h2 className="group__title">Payment</h2>
     <div className="group__items--payment">
@@ -14,10 +14,7 @@ const PaymentForm = (props) => (
           {numeral(props.orderTotal).format('0,0')} RP
         </p>
       </div>
-      <form
-        className="received__form"
-        onSubmit={props.onCompleteOrder}
-      >
+      <form className="received__form" onSubmit={props.onCompleteOrder}>
         <div className="payment-group">
           <label className="payment-group__title" htmlFor="received">
             Received
@@ -25,14 +22,14 @@ const PaymentForm = (props) => (
           {props.error && <p className="payment-error">{props.error}</p>}
           <input
             className="payment-group__amount--input"
-            type="number"
             id="received"
             name="received"
-            onChange={props.onReceivedChange}
             onBlur={props.onReceivedBlur}
+            onChange={props.onReceivedChange}
             onFocus={props.onReceivedFocus}
-            value={props.received}
             placeholder={0}
+            type="number"
+            value={props.received}
           />
         </div>
       </form>
@@ -41,23 +38,23 @@ const PaymentForm = (props) => (
       </button>
     </div>
     <PaymentReturnModal
-      changeDue={props.changeDue}
       amountChangeDue={props.received - props.orderTotal}
+      changeDue={props.changeDue}
       handleCloseModal={props.handleCloseModal}
     />
   </div>
 );
 
 PaymentForm.propTypes = {
-  orderTotal: PropTypes.number.isRequired,
-  error: PropTypes.string.isRequired,
-  onReceivedChange: PropTypes.func.isRequired,
-  onReceivedBlur: PropTypes.func.isRequired,
-  onReceivedFocus: PropTypes.func.isRequired,
-  received: PropTypes.number.isRequired,
-  onCompleteOrder: PropTypes.func.isRequired,
   changeDue: PropTypes.bool.isRequired,
-  handleCloseModal: PropTypes.func.isRequired
+  error: PropTypes.string.isRequired,
+  handleCloseModal: PropTypes.func.isRequired,
+  onCompleteOrder: PropTypes.func.isRequired,
+  onReceivedBlur: PropTypes.func.isRequired,
+  onReceivedChange: PropTypes.func.isRequired,
+  onReceivedFocus: PropTypes.func.isRequired,
+  orderTotal: PropTypes.number.isRequired,
+  received: PropTypes.number.isRequired
 };
 
 export default PaymentForm;

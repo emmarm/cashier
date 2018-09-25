@@ -1,15 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Header = (props) => (
+const Header = props => (
   <div className="header">
-    <h1 className="header__title">
-      Cashier
-    </h1>
-    <button
-      onClick={props.handleLogOut}
-      className="button--secondary-action"
-    >
+    <h1 className="header__title">Cashier</h1>
+    <button className="button--secondary-action" onClick={props.handleLogOut}>
       Log out
     </button>
   </div>

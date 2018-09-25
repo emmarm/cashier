@@ -4,15 +4,15 @@ import PropTypes from 'prop-types';
 import PaymentForm from './presentational/PaymentForm';
 
 const defaultState = {
-  received: 0,
   changeDue: false,
-  error: ''
+  error: '',
+  received: 0
 };
 
 class PaymentFormContainer extends Component {
-  state = { ...defaultState }
+  state = { ...defaultState };
 
-  onReceivedChange = (e) => {
+  onReceivedChange = e => {
     const received = Number(e.target.value);
 
     if (received) {
@@ -24,8 +24,8 @@ class PaymentFormContainer extends Component {
     this.setState(() => ({
       received
     }));
-  }
-  onReceivedBlur = (e) => {
+  };
+  onReceivedBlur = e => {
     const received = Number(e.target.value) * 1000;
     this.setState(() => ({ received }));
 
@@ -34,12 +34,12 @@ class PaymentFormContainer extends Component {
     if (diff < 0) {
       this.setState(() => ({ error: 'Insufficient value' }));
     }
-  }
-  onReceivedFocus = (e) => {
+  };
+  onReceivedFocus = e => {
     const received = Number(e.target.value) / 1000;
     this.setState(() => ({ received }));
-  }
-  onCompleteOrder = (e) => {
+  };
+  onCompleteOrder = e => {
     e.preventDefault();
 
     if (this.state.received === 0) {
@@ -53,33 +53,33 @@ class PaymentFormContainer extends Component {
 
       this.props.handleCompleteOrder();
     }
-  }
+  };
   handleCloseModal = () => {
     this.setState(() => ({ ...defaultState }));
 
     this.props.clearForm();
-  }
+  };
   render() {
     return (
       <PaymentForm
-        orderTotal={this.props.orderTotal}
-        error={this.state.error}
-        onReceivedChange={this.onReceivedChange}
-        onReceivedBlur={this.onReceivedBlur}
-        onReceivedFocus={this.onReceivedFocus}
-        received={this.state.received}
-        onCompleteOrder={this.onCompleteOrder}
         changeDue={this.state.changeDue}
+        error={this.state.error}
         handleCloseModal={this.handleCloseModal}
+        onCompleteOrder={this.onCompleteOrder}
+        onReceivedBlur={this.onReceivedBlur}
+        onReceivedChange={this.onReceivedChange}
+        onReceivedFocus={this.onReceivedFocus}
+        orderTotal={this.props.orderTotal}
+        received={this.state.received}
       />
     );
   }
 }
 
 PaymentFormContainer.propTypes = {
-  orderTotal: PropTypes.number.isRequired,
+  clearForm: PropTypes.func.isRequired,
   handleCompleteOrder: PropTypes.func.isRequired,
-  clearForm: PropTypes.func.isRequired
+  orderTotal: PropTypes.number.isRequired
 };
 
 export default PaymentFormContainer;

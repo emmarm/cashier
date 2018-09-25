@@ -1,39 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const OrderSummary = (props) => (
+const OrderSummary = props => (
   <div className="group group--order">
     <h2 className="group__title">Order Summary</h2>
     <div className="group__items--order">
-      {props.orderItems.map((item) => (
-        <div
-          className="group__item--order"
-          key={`div:${item.id}`}
-        >
-          <div
-            className="order-item__numsize"
-            key={`numsize:${item.id}`}
-          >
-            <p key={`num:${item.id}`} className="order-item__number">
+      {props.orderItems.map(item => (
+        <div className="group__item--order" key={`div:${item.id}`}>
+          <div className="order-item__numsize" key={`numsize:${item.id}`}>
+            <p className="order-item__number" key={`num:${item.id}`}>
               {item.number}
             </p>
-            <p key={`size:${item.id}`} className="order-item__size">
+            <p className="order-item__size" key={`size:${item.id}`}>
               {item.size}
             </p>
           </div>
-          <p key={`type:${item.id}`} className="order-item__type">
+          <p className="order-item__type" key={`type:${item.id}`}>
             {item.type}
           </p>
           {item.addons.length > 0 &&
-            item.addons.map((addon) => (
-              <p key={`${item.id}${addon}`} className="order-item__addon">
+            item.addons.map(addon => (
+              <p className="order-item__addon" key={`${item.id}${addon}`}>
                 {addon}
               </p>
             ))}
           <button
             className="order-item__button--delete"
-            onClick={props.handleDeleteItem}
             key={`button:${item.id}`}
+            onClick={props.handleDeleteItem}
             value={item.id}
           />
         </div>
@@ -43,15 +37,17 @@ const OrderSummary = (props) => (
 );
 
 OrderSummary.propTypes = {
-  orderItems: PropTypes.arrayOf(PropTypes.shape({
-    type: PropTypes.string.isRequired,
-    number: PropTypes.number.isRequired,
-    size: PropTypes.string,
-    addons: PropTypes.arrayOf(PropTypes.string),
-    itemsTotal: PropTypes.number.isRequired,
-    id: PropTypes.string.isRequired
-  })).isRequired,
-  handleDeleteItem: PropTypes.func.isRequired
+  handleDeleteItem: PropTypes.func.isRequired,
+  orderItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      addons: PropTypes.arrayOf(PropTypes.string),
+      id: PropTypes.string.isRequired,
+      itemsTotal: PropTypes.number.isRequired,
+      number: PropTypes.number.isRequired,
+      size: PropTypes.string,
+      type: PropTypes.string.isRequired
+    })
+  ).isRequired
 };
 
 export default OrderSummary;

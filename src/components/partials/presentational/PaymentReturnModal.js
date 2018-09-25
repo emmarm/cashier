@@ -9,17 +9,19 @@ const modalClass = {
   beforeClose: 'modal--before-close'
 };
 
-const PaymentReturnModal = (props) => (
+const PaymentReturnModal = props => (
   <Modal
     className={modalClass}
+    closeTimeoutMS={200}
+    contentLabel="Change Due"
     isOpen={props.changeDue}
     onRequestClose={props.handleCloseModal}
-    contentLabel="Change Due"
-    closeTimeoutMS={200}
   >
     <div className="payment-modal__container">
       <h2 className="payment-modal__title">Change Due</h2>
-      <p className="payment-modal__amount">{numeral(props.amountChangeDue).format('0,0')} RP</p>
+      <p className="payment-modal__amount">
+        {numeral(props.amountChangeDue).format('0,0')} RP
+      </p>
       <button
         className="button--main-action payment-modal__button"
         onClick={props.handleCloseModal}
@@ -31,9 +33,9 @@ const PaymentReturnModal = (props) => (
 );
 
 PaymentReturnModal.propTypes = {
+  amountChangeDue: PropTypes.number.isRequired,
   changeDue: PropTypes.bool.isRequired,
-  handleCloseModal: PropTypes.func.isRequired,
-  amountChangeDue: PropTypes.number.isRequired
+  handleCloseModal: PropTypes.func.isRequired
 };
 
 export default PaymentReturnModal;

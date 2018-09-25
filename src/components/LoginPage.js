@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import LoginFormContainer from './partials/LoginFormContainer';
 
-const LoginPage = (props) => (
+const LoginPage = props => (
   <div>
     <LoginFormContainer handleLogIn={props.handleLogIn} />
   </div>
