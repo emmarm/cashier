@@ -1,13 +1,14 @@
 .group {
   display: grid;
-  grid-template-columns: 140px 1fr;
+  grid-template-columns: 100px 1fr;
   margin: 15px 25px;
 }
 
 .group__title {
   align-self: center;
-  color: lighten($blue, 20%);
+  color: $primary;
   font-size: $m-font;
+  font-weight: 100;
   grid-column: 1 / span 1;
   margin-right: 20px;
   text-transform: uppercase;

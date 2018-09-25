@@ -5,17 +5,18 @@
 
 .group__items--order {
   @extend %group__items;
-  border-top: 2px solid lighten($light-blue, 20%);
+  // border-top: 2px solid lighten($primary-dark, 20%);
+  background: darken($off-white, 5%);
   display: flex;
   flex-direction: column;
   overflow: scroll;
 }
 
-.group__item--order{
+.group__item--order {
   @extend .group__item;
   align-items: center;
   background: white;
-  border: 1px solid $light-blue;
+  border: 1px solid $primary-dark;
   border-radius: 4px;
   display: flex;
   justify-content: flex-start;
@@ -30,7 +31,7 @@
 
 %order-item__attr--emph {
   @extend %order-item__attr;
-  font-size: $m-font;
+  font-size: $l-font;
   font-weight: bold;
 }
 
@@ -41,12 +42,12 @@
 }
 
 .order-item__number {
-  color: darkslateblue;
+  color: $highlight;
   padding: 4px;
 }
 
 .order-item__size {
-  color: darkorchid;
+  color: lighten($highlight, 10%);
   padding: 4px;
 }
 
@@ -65,11 +66,11 @@
 }
 
 .order-item__button--delete {
-  background: white  url("/assets/icon-delete.png");
+  background: white url('/assets/icon-delete.png');
   border: none;
   border-radius: 4px;
+  cursor: pointer;
   height: 24px;
   margin-left: 40px;
   width: 24px;
 }
-

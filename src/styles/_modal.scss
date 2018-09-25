@@ -1,9 +1,10 @@
 .modal {
-  opacity: 0;
   background: $off-white;
-  transition: opacity 150ms ease-in;
   margin: 100px auto;
-  width: 60vw;
+  opacity: 0;
+  outline: none;
+  transition: opacity 150ms ease-in;
+  width: 500px;
 }
 
 .modal--after-open {
@@ -16,5 +17,5 @@
 
 .ReactModal__Body--open,
 .ReactModal__Html--open {
-    overflow: hidden;
+  overflow: hidden;
 }

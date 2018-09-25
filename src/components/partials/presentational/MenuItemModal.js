@@ -78,18 +78,20 @@ const MenuItemModal = props => (
             ))}
         </div>
       </div>
-      <button
-        className="button--main-action item-modal__submit"
-        onClick={props.handleAddItem}
-      >
-        Add item
-      </button>
-      <button
-        className="button--secondary-action item-modal__cancel"
-        onClick={props.handleCloseModal}
-      >
-        Cancel
-      </button>
+      <div className="item-modal__button-group">
+        <button
+          className="button--secondary-action item-modal__cancel"
+          onClick={props.handleCloseModal}
+        >
+          Cancel
+        </button>
+        <button
+          className="button--main-action item-modal__submit"
+          onClick={props.handleAddItem}
+        >
+          Add item
+        </button>
+      </div>
     </div>
   </Modal>
 );

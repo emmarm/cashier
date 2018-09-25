@@ -1,33 +1,33 @@
 .button {
   color: white;
+  cursor: pointer;
   border: none;
-  border-radius: 3px;
-  padding: 12px;
+  border-radius: 5px;
+  padding: 10px 15px;
 }
 
 .button--default {
   @extend .button;
-  background: linear-gradient(to bottom right, lighten($dark-blue, 10%), $dark-blue);
-  height: 50px;
+  background: $primary-dark;
   min-width: 75px;
 }
 
 .button--default:hover {
-  background: lighten($dark-blue, 20%);
+  background: lighten($primary-dark, 15%);
 }
 
 .button--secondary-action {
   @extend .button;
-  background: lighten($blue, 10%);
+  background: darken($off-white, 20%);
 }
 
 .button--secondary-action:hover {
-  background: lighten($blue, 20%);
+  background: darken($off-white, 10%);
 }
 
 .button--main-action {
   @extend .button;
-  background: $orange;
+  background: $highlight;
   margin: 10px 20px;
   padding: 20px 10px;
   text-transform: uppercase;
@@ -35,9 +35,9 @@
 }
 
 .button--main-action:hover {
-  background: lighten($orange, 10%);
+  background: lighten($highlight, 10%);
 }
 
 .isSelected {
-  background: linear-gradient(to bottom right, $yellow-orange, darken($yellow-orange, 20%)) !important;
+  background: lighten($highlight, 10%) !important;
 }

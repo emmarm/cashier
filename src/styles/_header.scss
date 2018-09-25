@@ -1,15 +1,16 @@
 .header {
   align-items: center;
-  background: $blue;
+  background: $primary-dark;
   display: flex;
   justify-content: space-between;
   padding: 0 25px;
 }
 
 .header__title {
-  color: $yellow-orange;
-  font-size: $xxl-font;
-  margin: 20px;
+  color: lighten($highlight, 15%);
+  font-size: $xl-font;
+  font-weight: 100;
+  margin: 15px;
 }
 
 .header__title-link {
