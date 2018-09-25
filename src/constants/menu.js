@@ -1,53 +1,53 @@
 const menu = {
   boxes: [
     {
-      type: 'CocoChi',
+      type: 'Chicken',
       sizes: {
         S: 5000,
         L: 7000
       },
       addons: {
-        Kerupuk: 1000
+        Chips: 1000
       }
     },
     {
-      type: 'KecaChi',
+      type: 'Hamburger',
       sizes: {
         S: 5000,
         L: 7000
       },
       addons: {
-        Kerupuk: 1000
+        Chips: 1000
       }
     },
     {
-      type: 'KemanChi',
+      type: 'Sausage',
       sizes: {
         S: 5000,
         L: 7000
       },
       addons: {
-        Kerupuk: 1000
+        Chips: 1000
       }
     },
     {
-      type: 'Telur',
+      type: 'Egg',
       sizes: {
         S: 3500,
         L: 5000
       },
       addons: {
-        Kerupuk: 1000
+        Chips: 1000
       }
     },
     {
-      type: 'Tempe',
+      type: 'Salad',
       sizes: {
         S: 5000,
         L: 7000
       },
       addons: {
-        Kerupuk: 1000
+        Chips: 1000
       }
     }
   ],
@@ -65,7 +65,7 @@ const menu = {
       }
     },
     {
-      type: 'Jeruk',
+      type: 'Juice',
       sizes: {
         S: 1500,
         L: 2500
