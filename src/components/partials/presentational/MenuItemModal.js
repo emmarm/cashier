@@ -26,7 +26,12 @@ const MenuItemModal = (props) => (
           <button className="button--default item-modal__option" onClick={props.handleDecreaseNumber}>
             -
           </button>
-          <p className="item-modal__number">{props.number}</p>
+          <input
+            className="item-modal__number"
+            type="number"
+            value={props.number}
+            onChange={props.handleNumberInputChange}
+          />
           <button className="button--default item-modal__option" onClick={props.handleIncreaseNumber}>
             +
           </button>
@@ -63,8 +68,17 @@ const MenuItemModal = (props) => (
           }
         </div>
       </div>
-      <button className="button--main-action item-modal__submit" onClick={props.handleAddItem}>
+      <button
+        className="button--main-action item-modal__submit"
+        onClick={props.handleAddItem}
+      >
         Add item
+      </button>
+      <button
+        className="button--secondary-action item-modal__cancel"
+        onClick={props.handleCloseModal}
+      >
+        Cancel
       </button>
     </div>
   </Modal>
@@ -84,6 +98,7 @@ MenuItemModal.propTypes = {
   handleCloseModal: PropTypes.func.isRequired,
   handleDecreaseNumber: PropTypes.func.isRequired,
   number: PropTypes.number.isRequired,
+  handleNumberInputChange: PropTypes.func.isRequired,
   handleIncreaseNumber: PropTypes.func.isRequired,
   sizes: PropTypes.arrayOf(PropTypes.string),
   handleSizeSelect: PropTypes.func.isRequired,

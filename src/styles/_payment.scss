@@ -18,6 +18,14 @@
   font-weight: bold;
 }
 
+.group__items--payment {
+  @extend %group__items;
+  align-items: center;
+  background: lighten($light-blue, 20%);
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+}
+
 .payment-error {
   font-style: italic;
   color: maroon;
@@ -30,16 +38,5 @@
 
 .payment-group__amount--input {
   @extend .payment-group__amount;
-  /* Remove controls from Firefox */
-  -moz-appearance: textfield;
-  border: none;
-  text-align: center;
   width: 100px;
-}
-
-/* Remove controls from Safari and Chrome */
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none;
-  margin: 0; /* Removes leftover margin */
 }

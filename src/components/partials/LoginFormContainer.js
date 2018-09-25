@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-import { firebase } from '../../firebase/firebase';
 import LoginForm from './presentational/LoginForm';
 
 const defaultState = {
@@ -43,5 +43,9 @@ class LoginFormContainer extends Component {
     );
   }
 }
+
+LoginFormContainer.propTypes = {
+  handleLogIn: PropTypes.func.isRequired
+};
 
 export default LoginFormContainer;

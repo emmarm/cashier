@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Header = (props) => (
   <div className="header">
@@ -13,5 +14,9 @@ const Header = (props) => (
     </button>
   </div>
 );
+
+Header.propTypes = {
+  handleLogOut: PropTypes.func.isRequired
+};
 
 export default Header;

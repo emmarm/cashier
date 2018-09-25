@@ -44,6 +44,13 @@ class MenuItemModalContainer extends Component {
       number: prevState.number + 1
     }));
   }
+  handleNumberInputChange = (e) => {
+    const number = Number(e.target.value);
+
+    if (number) {
+      this.setState(() => ({ number }));
+    }
+  }
   handleDecreaseNumber = () => {
     this.setState((prevState) => ({
       number: prevState.number - 1 > 0 ?
@@ -74,6 +81,7 @@ class MenuItemModalContainer extends Component {
     this.props.updateOrderItems(orderItem);
     this.props.updateOrderTotal(itemsTotal);
     this.props.handleCloseModal();
+    return orderItem;
   }
   render() {
     return (
@@ -84,6 +92,7 @@ class MenuItemModalContainer extends Component {
         number={this.state.number}
         error={this.state.error}
         handleIncreaseNumber={this.handleIncreaseNumber}
+        handleNumberInputChange={this.handleNumberInputChange}
         handleDecreaseNumber={this.handleDecreaseNumber}
         handleSizeSelect={this.handleSizeSelect}
         handleAddonSelect={this.handleAddonSelect}

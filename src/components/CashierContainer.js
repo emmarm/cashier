@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 
 import database from '../firebase/firebase';
@@ -51,9 +52,7 @@ class CashierContainer extends Component {
     }));
   };
   handleDeleteItem = (id) => {
-    const item = this.state.orderItems.filter(
-      (orderItem) => orderItem.id === id
-    )[0];
+    const item = this.state.orderItems.filter((orderItem) => orderItem.id === id)[0];
 
     this.setState((prevState) => ({
       orderItems: prevState.orderItems.filter((prevItem) => prevItem.id !== id),
@@ -61,14 +60,17 @@ class CashierContainer extends Component {
     }));
   };
   handleCompleteOrder = () => {
-    const orderedItems = this.state.orderItems.map(
-      ({ type, size, number, addons }) => ({
-        type,
-        size,
-        number,
-        addons
-      })
-    );
+    const orderedItems = this.state.orderItems.map(({
+      type,
+      size,
+      number,
+      addons
+    }) => ({
+      type,
+      size,
+      number,
+      addons
+    }));
     const { authUser } = this.props;
     const order = {
       items: [...orderedItems],
@@ -78,7 +80,6 @@ class CashierContainer extends Component {
     };
 
     database.ref().push(order);
-    console.log(order);
   };
   clearForm = () => {
     this.setState(() => ({ ...defaultState }));
@@ -106,5 +107,10 @@ class CashierContainer extends Component {
     );
   }
 }
+
+CashierContainer.propTypes = {
+  authUser: PropTypes.string.isRequired,
+  handleLogOut: PropTypes.func.isRequired
+};
 
 export default CashierContainer;

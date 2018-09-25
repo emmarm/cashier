@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const OrderSummary = (props) => (
-  <div className="group">
+  <div className="group group--order">
     <h2 className="group__title">Order Summary</h2>
     <div className="group__items--order">
       {props.orderItems.map((item) => (
