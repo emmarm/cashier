@@ -41,36 +41,35 @@ class CashierContainer extends Component {
       localStorage.setItem('orderTotal', jsonTotal);
     }
   }
-  updateOrderItems = (orderItem) => {
-    this.setState((prevState) => ({
+  updateOrderItems = orderItem => {
+    this.setState(prevState => ({
       orderItems: [...prevState.orderItems, orderItem]
     }));
   };
-  updateOrderTotal = (itemTotal) => {
-    this.setState((prevState) => ({
+  updateOrderTotal = itemTotal => {
+    this.setState(prevState => ({
       orderTotal: prevState.orderTotal + itemTotal
     }));
   };
-  handleDeleteItem = (id) => {
-    const item = this.state.orderItems.filter((orderItem) => orderItem.id === id)[0];
+  handleDeleteItem = id => {
+    const item = this.state.orderItems.filter(
+      orderItem => orderItem.id === id
+    )[0];
 
-    this.setState((prevState) => ({
-      orderItems: prevState.orderItems.filter((prevItem) => prevItem.id !== id),
+    this.setState(prevState => ({
+      orderItems: prevState.orderItems.filter(prevItem => prevItem.id !== id),
       orderTotal: prevState.orderTotal - item.itemsTotal
     }));
   };
   handleCompleteOrder = () => {
-    const orderedItems = this.state.orderItems.map(({
-      type,
-      size,
-      number,
-      addons
-    }) => ({
-      type,
-      size,
-      number,
-      addons
-    }));
+    const orderedItems = this.state.orderItems.map(
+      ({ type, size, number, addons }) => ({
+        type,
+        size,
+        number,
+        addons
+      })
+    );
     const { authUser } = this.props;
     const order = {
       items: [...orderedItems],
@@ -87,9 +86,7 @@ class CashierContainer extends Component {
   render() {
     return (
       <div className="container">
-        <Header
-          handleLogOut={this.props.handleLogOut}
-        />
+        <Header handleLogOut={this.props.handleLogOut} />
         <MenuFormContainer
           updateOrderTotal={this.updateOrderTotal}
           updateOrderItems={this.updateOrderItems}

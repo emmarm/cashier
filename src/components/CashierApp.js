@@ -5,9 +5,9 @@ import LoginPage from './LoginPage';
 import CashierContainer from './CashierContainer';
 
 class CashierApp extends Component {
-  state = { authUser: null }
+  state = { authUser: null };
 
-  componentDidMount = () => {
+  componentDidMount() {
     try {
       const authUser = localStorage.getItem('authUser');
 
@@ -17,30 +17,35 @@ class CashierApp extends Component {
     }
   }
   handleLogIn = (email, password) => {
-    firebase.auth().signInWithEmailAndPassword(email, password).then((user) => {
-      const { uid } = user;
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(user => {
+        const { uid } = user;
 
-      this.setState(() => ({ authUser: uid }));
+        this.setState(() => ({ authUser: uid }));
 
-      return uid;
-    }).then((uid) => localStorage.setItem('authUser', uid));
-  }
+        return uid;
+      })
+      .then(uid => localStorage.setItem('authUser', uid));
+  };
   handleLogOut = () => {
     firebase.auth().signOut();
     localStorage.setItem('authUser', null);
     this.setState(() => ({ authUser: null }));
-  }
+  };
   render() {
     const { authUser } = this.state;
     return (
       <div>
-        {authUser ?
+        {authUser ? (
           <CashierContainer
             authUser={authUser}
             handleLogOut={this.handleLogOut}
-          /> :
+          />
+        ) : (
           <LoginPage handleLogIn={this.handleLogIn} />
-        }
+        )}
       </div>
     );
   }

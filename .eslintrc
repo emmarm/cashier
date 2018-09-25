@@ -1,5 +1,5 @@
 {
-  "extends": "airbnb",
+  "extends": ["airbnb", "plugin:prettier/recommended"],
   "parser": "babel-eslint",
   "parserOptions": {
     "ecmaVersion": 6
@@ -11,25 +11,28 @@
   },
   "rules": {
     "comma-dangle": "off",
-    "no-unused-vars": [
-      "warn",
+    "consistent-return": "warn",
+    "jsx-a11y/anchor-is-valid": "warn",
+    "jsx-a11y/label-has-for": [
+      2,
       {
-        "vars": "local",
-        "args": "none"
+        "components": ["Label"],
+        "required": {
+          "some": ["nesting", "id"]
+        },
+        "no-unused-vars": [
+          "warn",
+          {
+            "vars": "local",
+            "args": "warn"
+          }
+        ],
+        "allowChildren": false
       }
     ],
     "react/jsx-filename-extension": "off",
-    "jsx-a11y/anchor-is-valid": "off",
-    "arrow-parens": "off",
-    "react/prop-types": "warn",
+    "react/no-did-mount-set-state": "warn",
     "react/no-unused-state": "warn",
-    "jsx-a11y/label-has-for": [ 2, {
-      "components": [ "Label" ],
-      "required": {
-          "some": [ "nesting", "id" ]
-      },
-      "allowChildren": false
-    }],
-    "react/no-did-mount-set-state": "off"
+    "react/prop-types": "warn"
   }
 }
